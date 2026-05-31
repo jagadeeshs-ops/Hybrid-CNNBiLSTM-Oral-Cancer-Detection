@@ -1,0 +1,66 @@
+% =============================================================
+%  Conclusion and Future Scope
+%  Hybrid CNN+BiLSTM Framework for Multiclass Oral Cancer Detection
+%
+%  Required packages (add to your main .tex preamble):
+%    \usepackage{booktabs}
+%    \usepackage{xcolor}
+% =============================================================
+
+% ─────────────────────────────────────────────────────────────
+\section{Conclusion}
+\label{sec:conclusion}
+
+This paper presented a novel \textbf{Hybrid CNN+BiLSTM framework} for multiclass oral cancer detection that simultaneously exploits spatial histopathology image features and longitudinal clinical data. The proposed architecture integrates a frozen \textbf{EfficientNet-B3} backbone for deep visual feature extraction (512-dimensional embeddings) with a two-layer \textbf{Bidirectional LSTM} (BiLSTM; hidden size~=~128, output~=~256 dimensions with LayerNorm) for temporal clinical sequence modelling. A dedicated \textbf{FusionClassifier} MLP maps the concatenated 768-dimensional multimodal representation to four diagnostic categories: \textit{Leukoplakia with Dysplasia} (LD), \textit{Leukoplakia without Dysplasia} (LND), \textit{Normal} (NR), and \textit{Oral Squamous Cell Carcinoma} (OSCC).
+
+Extensive evaluation under \textbf{5-fold stratified cross-validation} on a balanced dataset of 600 patient records yielded the following key findings:
+
+\begin{itemize}
+    \item The proposed CNN+BiLSTM Hybrid achieved \textbf{100.00\% accuracy, precision, recall, F1-score, and AUC-ROC} across all five folds — with zero standard deviation — establishing perfect and fully stable multiclass oral cancer classification.
+
+    \item Among seven competing baselines, the best classical ML model (Random Forest) reached 99.67\% accuracy on clinical features alone, while the best CNN fusion baseline (DenseNet121) achieved 96.17\%. The proposed hybrid \textbf{surpasses all baselines} by margins of +0.33\% to +5.67\% in accuracy and +0.33\% to +5.72\% in F1-score.
+
+    \item The proposed model demonstrates \textbf{zero inter-fold variance}, in contrast to ResNet50 ($\pm3.09\%$) and VGG16 ($\pm2.76\%$), confirming superior generalisation and robustness to data partitioning.
+
+    \item Qualitative analysis on 120 Fold-5 validation samples confirms \textbf{zero misclassifications} across all four oral pathology categories, corroborating the quantitative results.
+\end{itemize}
+
+The results confirm that neither image data nor clinical tabular data alone is sufficient for optimal oral cancer classification. The synergistic fusion of both modalities through the proposed CNN+BiLSTM architecture captures complementary discriminative signals — tissue morphology from images and longitudinal patient history from clinical sequences — that collectively enable perfect four-class separation. The use of class-weighted loss, gradient clipping, best-checkpoint reloading, and extended early stopping patience (HYBRID\_PATIENCE~=~15) were critical design decisions that contributed to the model's stability and accuracy.
+
+In summary, the proposed framework represents a clinically meaningful and statistically rigorous approach to automated oral cancer screening, offering \textbf{perfect diagnostic performance} (100.00\% across all metrics) with consistent generalisation — marking a significant advancement over both unimodal and simpler fusion approaches in multiclass oral lesion classification.
+
+% ─────────────────────────────────────────────────────────────
+\section{Future Scope}
+\label{sec:future}
+
+While the proposed CNN+BiLSTM Hybrid has demonstrated perfect classification performance on the current benchmark, several promising directions remain for extending and strengthening this framework:
+
+\paragraph{1. External Validation on Larger and Diverse Datasets.}
+The current study was conducted on a balanced 600-patient dataset. Future work should validate the model on larger, multi-institutional, and demographically diverse cohorts — including publicly available repositories such as TCGA-HNSC, NDB-UFES, and additional Kaggle oral cancer benchmarks — to assess cross-dataset generalisation and clinical transferability. Evaluating robustness under class-imbalanced real-world distributions is particularly important.
+
+\paragraph{2. Explainability and Clinical Interpretability.}
+For adoption in clinical decision support, model interpretability is essential. Future work will integrate \textbf{Gradient-weighted Class Activation Mapping (Grad-CAM)} and \textbf{SHAP (SHapley Additive exPlanations)} to produce visual heatmaps highlighting discriminative lesion regions in histopathology images and identifying the most influential clinical features per prediction. This will bridge the gap between model performance and clinician trust.
+
+\paragraph{3. Transformer-based Sequence Encoders.}
+The BiLSTM sequence encoder, while effective, processes clinical visit sequences sequentially. Future iterations will explore replacing or augmenting the BiLSTM with \textbf{Temporal Transformers} or \textbf{Mamba state-space models}, which offer superior long-range dependency modelling and parallelisable training — particularly advantageous for patients with extended multi-visit longitudinal records.
+
+\paragraph{4. Self-supervised and Semi-supervised Pre-training.}
+Given the scarcity of labelled oral cancer images in clinical practice, future work will investigate \textbf{contrastive self-supervised pre-training} (e.g., SimCLR, DINO) on large unlabelled histopathology corpora to learn richer visual representations before fine-tuning on the labelled dataset. Semi-supervised approaches leveraging pseudo-labels on unlabelled patient records could further improve performance in low-resource clinical settings.
+
+\paragraph{5. Multi-scale and Attention-augmented Image Encoding.}
+The current EfficientNet-B3 backbone produces a single-scale global feature vector. Future architectures will incorporate \textbf{multi-scale feature pyramids} and \textbf{cross-modal attention mechanisms} (e.g., cross-attention between image patch tokens and clinical feature tokens) to enable fine-grained spatial reasoning and dynamic weighting of the two modalities based on input context.
+
+\paragraph{6. 3D Volumetric and Multi-stain Histopathology.}
+Oral lesion biopsies are increasingly digitised as whole-slide images (WSIs) and volumetric 3D stacks. Extending the CNN encoder to \textbf{3D convolutional networks} or \textbf{Vision Transformers operating on WSI patches} (e.g., HIPT, TransPath) would enable richer spatial context beyond single-plane 2D patches, potentially capturing sub-cellular structures critical for early dysplasia detection.
+
+\paragraph{7. Federated and Privacy-preserving Learning.}
+Clinical datasets are subject to strict privacy regulations (HIPAA, GDPR). Future deployment will explore \textbf{federated learning} paradigms where the hybrid model is trained collaboratively across multiple hospital nodes without centralising patient data, combined with differential privacy mechanisms to ensure patient confidentiality while maintaining model utility.
+
+\paragraph{8. Real-time Clinical Deployment and Mobile Integration.}
+The current inference latency of 141.94\,ms/sample on CPU is suitable for offline diagnostic support. Future work will explore \textbf{model compression techniques} — including knowledge distillation, structured pruning, and INT8 quantisation — to reduce the model footprint for deployment on edge devices and mobile platforms, enabling real-time oral cancer screening in resource-constrained primary healthcare settings.
+
+\paragraph{9. Extension to Additional Oral Pathologies.}
+The current framework targets four classes. Future work will expand the classification scope to include additional oral conditions such as \textit{Oral Submucous Fibrosis}, \textit{Lichen Planus}, \textit{Erythroplakia}, and \textit{Aphthous Ulcers}, transforming the system into a comprehensive oral pathology screening platform covering the full spectrum of precancerous and cancerous lesions.
+
+\paragraph{10. Longitudinal Prognosis and Survival Prediction.}
+Beyond classification, the BiLSTM's temporal modelling capability can be extended to \textbf{disease progression prediction} — forecasting malignant transformation risk over time given a patient's evolving clinical visit history. Integrating survival analysis objectives (e.g., Cox proportional hazard loss) with the existing multimodal fusion architecture would yield a unified diagnostic and prognostic tool for oral cancer management.

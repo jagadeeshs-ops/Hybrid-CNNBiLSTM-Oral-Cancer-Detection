@@ -1,0 +1,15 @@
+# Oral Cancer CNN+LSTM Hybrid Pipeline
+# Requirements
+# Install with: pip install -r requirements.txt
+
+torch>=2.1.0
+torchvision>=0.16.0
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+Pillow>=10.0.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+tqdm>=4.65.0
+staintools>=2.1.2        # Macenko stain normalization
+spams>=2.6.5.4           # Required by staintools

@@ -1,0 +1,11 @@
+Model: resnet50
+                         precision    recall  f1-score   support
+
+  Leukoplakia_Dysplasia       0.89      0.83      0.86        30
+Leukoplakia_NoDysplasia       0.94      1.00      0.97        30
+                 Normal       1.00      1.00      1.00        30
+                   OSCC       0.90      0.90      0.90        30
+
+               accuracy                           0.93       120
+              macro avg       0.93      0.93      0.93       120
+           weighted avg       0.93      0.93      0.93       120

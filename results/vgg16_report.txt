@@ -1,0 +1,11 @@
+Model: vgg16
+                         precision    recall  f1-score   support
+
+  Leukoplakia_Dysplasia       0.97      0.97      0.97        30
+Leukoplakia_NoDysplasia       0.97      1.00      0.98        30
+                 Normal       1.00      0.97      0.98        30
+                   OSCC       0.97      0.97      0.97        30
+
+               accuracy                           0.97       120
+              macro avg       0.98      0.98      0.97       120
+           weighted avg       0.98      0.97      0.97       120

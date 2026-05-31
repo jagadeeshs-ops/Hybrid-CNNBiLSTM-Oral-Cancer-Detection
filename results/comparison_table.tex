@@ -1,0 +1,19 @@
+\begin{table}[htbp]
+\centering
+\caption{Performance Comparison of Baseline Models vs. Proposed CNN+BiLSTM Framework}
+\label{tab:comparison}
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Model} & \textbf{Acc (\%)} & \textbf{Prec (\%)} & \textbf{Rec (\%)} & \textbf{F1 (\%)} & \textbf{AUC-ROC} & \textbf{ms/smp} \\
+\midrule
+Random Forest & 99.67 $\pm$ 0.67 & 99.68 $\pm$ 0.65 & 99.67 $\pm$ 0.67 & 99.67 $\pm$ 0.67 & 1.0000 $\pm$ 0.0000 & 2.968 \\
+SVM (RBF) & 99.17 $\pm$ 0.53 & 99.19 $\pm$ 0.52 & 99.17 $\pm$ 0.53 & 99.17 $\pm$ 0.53 & 0.9999 $\pm$ 0.0001 & 0.138 \\
+VGG16 \texttt{+} Clinical & 95.16 $\pm$ 2.76 & 95.07 $\pm$ 2.93 & 95.06 $\pm$ 2.93 & 95.05 $\pm$ 2.92 & 0.9913 $\pm$ 0.0084 & 114.708 \\
+ResNet50 \texttt{+} Clinical & 94.33 $\pm$ 3.09 & 94.38 $\pm$ 3.09 & 94.33 $\pm$ 3.09 & 94.28 $\pm$ 3.10 & 0.9937 $\pm$ 0.0051 & 131.567 \\
+DenseNet121 \texttt{+} Clinical & 96.17 $\pm$ 2.39 & 96.22 $\pm$ 2.41 & 96.17 $\pm$ 2.39 & 96.13 $\pm$ 2.45 & 0.9972 $\pm$ 0.0019 & 158.921 \\
+EfficientNet-B0 \texttt{+} Clinical & 95.83 $\pm$ 0.91 & 95.95 $\pm$ 0.77 & 95.83 $\pm$ 0.91 & 95.75 $\pm$ 1.00 & 0.9979 $\pm$ 0.0008 & 102.328 \\
+MobileNetV3 \texttt{+} Clinical & 95.33 $\pm$ 1.87 & 95.38 $\pm$ 1.91 & 95.33 $\pm$ 1.87 & 95.28 $\pm$ 1.91 & 0.9940 $\pm$ 0.0038 & 76.939 \\
+\textbf{CNN\texttt{+}BiLSTM (Proposed)} & 100.00 $\pm$ 0.00 & 100.00 $\pm$ 0.00 & 100.00 $\pm$ 0.00 & 100.00 $\pm$ 0.00 & 1.0000 $\pm$ 0.0000 & 141.939 \\
+\bottomrule
+\end{tabular}
+\end{table}

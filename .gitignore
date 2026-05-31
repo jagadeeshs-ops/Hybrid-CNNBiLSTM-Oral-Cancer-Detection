@@ -1,0 +1,40 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+env/
+.env/
+
+# Large dataset files (too large for GitHub)
+data/Mendeley/
+data/NDB-UFES/
+data/TCGA-HNSC/
+data/kaggle/
+
+# Large model checkpoint files (>100MB total — use Git LFS or exclude)
+models/
+checkpoints/
+
+# Logs
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# Temp
+*.tmp
+*.bak

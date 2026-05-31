@@ -1,0 +1,11 @@
+Model: densenet121
+                         precision    recall  f1-score   support
+
+  Leukoplakia_Dysplasia       0.90      0.93      0.92        30
+Leukoplakia_NoDysplasia       0.94      1.00      0.97        30
+                 Normal       1.00      1.00      1.00        30
+                   OSCC       1.00      0.90      0.95        30
+
+               accuracy                           0.96       120
+              macro avg       0.96      0.96      0.96       120
+           weighted avg       0.96      0.96      0.96       120

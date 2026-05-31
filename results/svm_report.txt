@@ -1,0 +1,11 @@
+Model: svm
+                         precision    recall  f1-score   support
+
+  Leukoplakia_Dysplasia       1.00      0.97      0.98        30
+Leukoplakia_NoDysplasia       0.97      1.00      0.98        30
+                 Normal       1.00      1.00      1.00        30
+                   OSCC       1.00      1.00      1.00        30
+
+               accuracy                           0.99       120
+              macro avg       0.99      0.99      0.99       120
+           weighted avg       0.99      0.99      0.99       120

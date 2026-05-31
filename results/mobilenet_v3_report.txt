@@ -1,0 +1,11 @@
+Model: mobilenet_v3
+                         precision    recall  f1-score   support
+
+  Leukoplakia_Dysplasia       0.90      0.87      0.88        30
+Leukoplakia_NoDysplasia       0.97      1.00      0.98        30
+                 Normal       1.00      1.00      1.00        30
+                   OSCC       0.90      0.90      0.90        30
+
+               accuracy                           0.94       120
+              macro avg       0.94      0.94      0.94       120
+           weighted avg       0.94      0.94      0.94       120
